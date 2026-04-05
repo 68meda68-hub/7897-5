@@ -363,7 +363,7 @@ body {
 <div id="map"></div>
 
 <div id="ui-layer">
-  <div id="zoom-level">Zoom: 16</div>
+  <div id="zoom-level">Zoom: 15</div>
   <div id="slogan"></div>
   <div id="contact-box"></div>
   <div id="info-panel"></div>
@@ -398,7 +398,7 @@ const map = new mapboxgl.Map({
     glyphs: 'https://api.mapbox.com/fonts/v1/mapbox/{fontstack}/{range}.pbf?access_token=' + mapboxgl.accessToken
   },
   center: [33.983374, 38.30359],
-  zoom: 16,
+  zoom: 15,
   pitch: 0,
   bearing: 75,
   attributionControl: false,
@@ -881,7 +881,7 @@ function startRotation() {
 
   map.easeTo({
     center: geoCenter,
-    zoom: 16,
+    zoom: 15,
     duration: 6000,
     pitch: 35
   });
