@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7897-5 Parsel Ucuş + Sunum</title>
+<title>849-2 Parsel Ucuş + Sunum</title>
 
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
@@ -167,7 +167,7 @@ body {
 
 #contact-box {
   position: absolute;
-  bottom: 150px;
+  bottom: 170px;
   left: 15px;
 
   width: 48vw;
@@ -418,7 +418,7 @@ let rotation;
 const route=[
 [33.983374, 38.30359],
 [34.003683, 38.309782],
-[34.007825, 38.305067]
+[34.007607, 38.305277]
 ];
 
 
@@ -489,7 +489,7 @@ map.addLayer({
   type:"line",
   source:"parsel",
   paint:{
-    "line-color":"#ff0000",
+    "line-color":"#000000",
     "line-width":4
   }
 });
@@ -585,7 +585,7 @@ setTimeout(() => {
   if (!droneMarker) {
 
     const droneEl = document.createElement("img");
-    droneEl.src = "images/ucak.png";
+    droneEl.src = "images/ucak_2.png";
     droneEl.style.width = "70px";
     droneEl.style.height = "70px";
     droneEl.style.opacity = "0";
@@ -632,7 +632,7 @@ function startSmoothRoute() {
   const zoomElement = document.getElementById("zoom-level");
   if (zoomElement) zoomElement.classList.add("hide");
 
-  const totalDuration = 25000;
+  const totalDuration = 17000;
   const climbDuration = 4000;
   const targetPitch = 35;
 
@@ -1010,6 +1010,8 @@ async function startTextFlow(){
   const slogans = [
     "️🏭  Sanayi Sitesinde",
 	"🧾  İnşaat Ruhsatı Hazır",
+	"🗺️  Küçük Sanayi Alanı,",
+	"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hmax=2 Kat İmarlı",
 	"📏  2800 m²",
 	"🔁  Takas Olur"  
   ];
@@ -1151,29 +1153,33 @@ async function startTextFlow(){
 }
 
 
-function showCenterTitle(){
-
+function showCenterTitle() {
   const title = document.getElementById("hero-center-title");
+  const textLines = ["Satılık", "Açık Alan Arsa"]; // 2 satır
 
-  const text = "Satılık Arsa";
   title.innerHTML = "";
 
-  // Harf animasyonu
-  [...text].forEach((letter, index) => {
+  textLines.forEach(line => {
+    const lineDiv = document.createElement("div"); // her satır için div
+    lineDiv.style.display = "block"; // satır olarak göster
+    lineDiv.style.textAlign = "center"; // istersen ortala
 
-  const span = document.createElement("span");
-  span.style.display = "inline-block";
-  span.style.animation = `letterWave 4s ease-in-out ${index * 0.2}s infinite`;
+    [...line].forEach((letter, index) => {
+      const span = document.createElement("span");
+      span.style.display = "inline-block";
+      span.style.animation = `letterWave 4s ease-in-out ${index * 0.2}s infinite`;
 
-	if (letter === " ") {
-    span.innerHTML = "&nbsp;";   // 🔥 boşluğu görünür yap
-	} else {
-    span.textContent = letter;
-	}
+      if (letter === " ") {
+        span.innerHTML = "&nbsp;";
+      } else {
+        span.textContent = letter;
+      }
 
-	title.appendChild(span);
+      lineDiv.appendChild(span);
+    });
 
-	});
+    title.appendChild(lineDiv);
+  });
 
   // Göster
   title.style.opacity = 1;
